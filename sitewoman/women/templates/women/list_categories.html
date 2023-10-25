@@ -1,0 +1,8 @@
+
+    {% for cats in v_cats %}
+        {% if cats.id == cats_selected  %}
+            <li class="selected">{{ cats.name }}</li>
+            {% else %}
+            <li> <a href="{% url 'show_category' cats.id %}">{{ cats.name }}</a> </li>
+        {% endif %}
+    {% endfor %}

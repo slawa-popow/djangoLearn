@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-e1h&naxcp9+n+k49i)u)_)01qgjv2g-dlfdcq7ds)sm9lsa8ob'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1']
 
@@ -55,7 +55,9 @@ ROOT_URLCONF = 'sitewoman.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR / 'sitewoman/templates',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -118,6 +120,12 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# иначе ошибка 404 файл css не найден
+WOMAN_APP_STATIC_DIR = "woman/static/woman/"
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+    WOMAN_APP_STATIC_DIR,
+]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
