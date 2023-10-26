@@ -29,7 +29,8 @@ ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
-
+# python manage.py shell_plus --print-sql
+# !CLS - clear terminal
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
     'women.apps.WomenConfig',
 ]
 
@@ -75,11 +77,15 @@ WSGI_APPLICATION = 'sitewoman.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
+# only mysql 8, port: 3308. (Mysql 5 - port: 3306)
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'sitewomandb',
+        'USER': 'slawa',
+        'PASSWORD': '2586587Slawa',
+        'HOST': '127.0.0.1',
+        'PORT': '3308',
     }
 }
 
@@ -112,7 +118,8 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_TZ = True
+# False - системное время, иначе на 3 часа разница
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
